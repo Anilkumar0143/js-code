@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add Edit Remove HTML Table Row</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <style>
+            
+            .container{overflow: hidden}
+            .tab{float: left;}
+            .tab-2{margin-left: 50px}
+            .tab-2 input{display: block;margin-bottom: 10px}
+            tr{transition:all .25s ease-in-out}
+            tr:hover{background-color:#EEE;cursor: pointer}
+            
+        </style>
+        
+    </head>
+    <body>
+        
+        <div class="container">
+            <div class="tab tab-1">
+                <table id="table" border="1">
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                    </tr>
+                    <tr>
+                        <td>A1</td>
+                        <td>B1</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>A3</td>
+                        <td>B3</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>A2</td>
+                        <td>B2</td>
+                        <td>20</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="tab tab-2">
+                First Name :<input type="text" name="fname" id="fname">
+                Last Name :<input type="text" name="lname" id="lname">
+                Age :<input type="number" name="age" id="age">
+                
+                <button onclick="addHtmlTableRow();">Add</button>
+                <button onclick="editHtmlTbleSelectedRow();">Edit</button>
+                <button onclick="removeSelectedRow();">Remove</button>
+            </div>
+        </div>
+        
+        <script>
+            
+            var rIndex,
+                table = document.getElementById("table");
+            
+            // check the empty input
+            function checkEmptyInput()
+            {
+                var isEmpty = false,
+                    fname = document.getElementById("fname").value,
+                    lname = document.getElementById("lname").value,
+                    age = document.getElementById("age").value;
+            
+                if(fname === ""){
+                    alert("First Name Connot Be Empty");
+                    isEmpty = true;
+                }
+                else if(lname === ""){
+                    alert("Last Name Connot Be Empty");
+                    isEmpty = true;
+                }
+                else if(age === ""){
+                    alert("Age Connot Be Empty");
+                    isEmpty = true;
+                }
+                return isEmpty;
+            }
+            
+            // add Row
+            function addHtmlTableRow()
+            {
+                // get the table by id
+                // create a new row and cells
+                // get value from input text
+                // set the values into row cell's
+                if(!checkEmptyInput()){
+                var newRow = table.insertRow(table.length),
+                    cell1 = newRow.insertCell(0),
+                    cell2 = newRow.insertCell(1),
+                    cell3 = newRow.insertCell(2),
+                    fname = document.getElementById("fname").value,
+                    lname = document.getElementById("lname").value,
+                    age = document.getElementById("age").value;
+            
+                cell1.innerHTML = fname;
+                cell2.innerHTML = lname;
+                cell3.innerHTML = age;
+                // call the function to set the event to the new row
+                selectedRowToInput();
+            }
+            }
+            
+            // display selected row data into input text
+            function selectedRowToInput()
+            {
+                
+                for(var i = 1; i < table.rows.length; i++)
+                {
+                    table.rows[i].onclick = function()
+                    {
+                      // get the seected row index
+                      rIndex = this.rowIndex;
+                      document.getElementById("fname").value = this.cells[0].innerHTML;
+                      document.getElementById("lname").value = this.cells[1].innerHTML;
+                      document.getElementById("age").value = this.cells[2].innerHTML;
+                    };
+                }
+            }
+            selectedRowToInput();
+            
+            function editHtmlTbleSelectedRow()
+            {
+                var fname = document.getElementById("fname").value,
+                    lname = document.getElementById("lname").value,
+                    age = document.getElementById("age").value;
+               if(!checkEmptyInput()){
+                table.rows[rIndex].cells[0].innerHTML = fname;
+                table.rows[rIndex].cells[1].innerHTML = lname;
+                table.rows[rIndex].cells[2].innerHTML = age;
+              }
+            }
+            
+            function removeSelectedRow()
+            {
+                table.deleteRow(rIndex);
+                // clear input text
+                document.getElementById("fname").value = "";
+                document.getElementById("lname").value = "";
+                document.getElementById("age").value = "";
+            }
+        </script>
+  <!-- <script>      
+// let sno = 0;
+// function addNew() {
+//     var body = document.getElementById("newRow");
+//     for (var i = 0; i < 1; i++) {
+//         var row = document.createElement("tr");
+//         row.setAttribute("id", "texrow" + (sno++));
+//         for (var j = 0; j < 4; j++) {
+//             var cell = document.createElement("td");
+//             var cellinput = document.createElement("input");
+//             cellinput.setAttribute("type", "text");
+//             cellinput.setAttribute("id", "tex" + (i++) + (sno));
+//             cellinput.setAttribute("value", i);
+//             cell.appendChild(cellinput);
+//             row.appendChild(cell);
+//         }
+//     }
+//     body.appendChild(row);
+// }
+
+// function removeRow() {
+//     if (sno >= 1) {
+//         sno--;
+//         document.getElementById("newRow").deleteRow(sno);
+//     }else(alert("you have no row to delete"))
+// }
+
+// function addData() {
+//     let deatils = [];
+//     console.log(sno);
+//     for (let f = 1; f <= sno; f++) {
+
+//         let obj = {
+//             serialNo: document.getElementById("tex0" + f).value,
+//             productName: document.getElementById("tex1" + f).value,
+//             price: document.getElementById("tex2" + f).value,
+//             date: document.getElementById("tex3" + f).value
+//         };
+//         deatils.push(obj);
+//         console.log(deatils);
+//         localStorage.setItem("person", JSON.stringify(deatils));
+//     }
+// }
+
+
+// let sno = 0;
+// function addNew() {
+//     var table = document.getElementById("newRow");
+//     var row = table.insertRow(0);
+//     var cell1 = row.insertCell(0);
+//     var cell2 = row.insertCell(1);
+//     var cell3 = row.insertCell(2);
+//     var cell4 = row.insertCell(3);
+//     sno++;
+//     cell1.innerHTML = sno;
+//     cell2.innerHTML = '<input type="text" class="form-control productName" name="productName" value="anil">';
+//     cell3.innerHTML = '<input  type="number"   class="form-control" name="price" value="50">';
+//     cell4.innerHTML = '<input type="date"   class="form-control" name="date" value="2020-08-02">';
+// }
+// function removeRow() {
+//     document.getElementById("newRow").deleteRow(0);
+//     sno--;
+// }
+
+// function addData() {
+//     let deatils = [];
+//     let obj = {
+//         serialNo: sno,
+//         productName: document.getElementsByName("productNam").value,
+//         price: document.getElementsByName("price").value,
+//         date: document.getElementsByName("date").value
+//     }
+//     deatils.push(obj);
+//     console.log(deatils);
+//     localStorage.setItem("person", JSON.stringify(deatils));
+// }
+ </script> -->
+    </body>
+</html>

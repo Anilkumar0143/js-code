@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Dashboard</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <!-- Our Custom CSS -->
+    <link rel="stylesheet" href="assets/style.css">
+
+
+</head>
+
+<body onload="disPlayData()">
+    <div class="wrapper ">
+        <!-- Sidebar  -->
+
+        <nav id="sidebar"  Class="active">
+            <div class="sidebar-header">
+                <h3> Sidebar</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+
+                <li>
+                    <a href="#">Home</a>
+
+                </li>
+                <li>
+                    <a href="#">Data</a>
+                </li>
+
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+            <!-- /Sidebar  -->
+        </nav>
+        <button type="button" id="sidebarCollapse"  class="navbar-btn btn-info">
+            <div style="transform: rotate(270deg)">toggle</div>
+        </button>
+        <!-- Container -->
+        <div id="content">
+            <!-- Page nav  -->
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="container-fluid">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav py-2 mr-auto">
+                            <li class="nav-item active">
+                                <h2> Anil Kumar</h2>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!--/Page nav  -->
+            <div class="col-md-12  mt-4 d-flex align-items-stretch">
+                <!--Card-->
+                <div class="card w-100">
+                    <!--Card body-->
+                    <div class="card-body">
+                        <!-- Title -->
+                        <div>
+                            <div class="row">
+                                <div class="col-8">
+                                    <h4 class="card-title">Data</h4>
+                                </div>
+                                <div class="col-2">
+                                    <form class="form-inline d-flex justify-content-center md-form form-lg">
+                                        <input class="form-control form-control-lg ml-3 w-75" type="text"
+                                            placeholder="Search" aria-label="Search">
+                                        <i class="fas fa-search" aria-hidden="true"></i>
+                                    </form>
+                                </div>
+                                <div class="col-2">
+                                    <form class="form-inline d-flex justify-content-center md-form form-lg">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                                            data-target="#addNew">Add new</button>
+                                    </form>
+                                    <!-- Button trigger modal -->
+
+
+                                    <!-- Central Modal large -->
+                                    <div class="modal fade show" id="addNew" tabindex="-1" role="dialog"
+                                        aria-labelledby="myModalLabel" aria-hidden="true">
+
+                                        <!-- Change class .modal-sm to change the size of the modal -->
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title w-100" id="myModalLabel">Add</h4>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row w-100 mt-4">
+                                                        <div class="col-6 d-flex justify-content-center">
+                                                            <a class="float-right  mr-5"
+                                                                data-toggle="modal" data-target="#client"
+                                                                data-dismiss="modal">
+                                                                Client
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-6 d-flex justify-content-center">
+                                                            <a class="float-right  mr-5"
+                                                                data-toggle="modal" data-target="#user"
+                                                                data-dismiss="modal">
+                                                                User
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row w-100 mt-4">
+                                                        <div class="col-6 d-flex justify-content-center">
+                                                            <a class="float-right  mr-5"
+                                                                data-toggle="modal" data-target="#employe"
+                                                                data-dismiss="modal">
+                                                                Employe
+                                                            </a>
+                                                        </div>
+                                                        <div class="col-6 d-flex justify-content-center">
+                                                            <a class="float-right  mr-5"
+                                                                data-toggle="modal" data-target="#product"
+                                                                data-dismiss="modal">
+                                                                Product
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="py-2">
+                                                        <hr>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Central Modal Small -->
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Text -->
+                        <div class="table-responsive t1-padding-left">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th class="w-25">
+                                            <h4>S.NO</h4>
+                                        </th>
+                                        <th class="w-25">
+
+                                            <h4>Probucts</h4>
+
+                                        </th>
+                                        <th class="w-25">
+
+                                            <h4>Price</h4>
+
+                                        </th>
+                                        <th class="w-25">
+
+                                            <h4>Date</h4>
+
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tbody">
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </div>
+                    <!--/Card body-->
+                </div>
+                <!--/.Card-->
+            </div>
+            <!-- modal for client -->
+            <!-- Extra large modal -->
+            <div class="modal fade bd-example-modal-xl" id="client" tabindex="-1" role="dialog"
+                aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <a href="#" class="text-success ml-2">
+                                <h5 class="modal-title">Add Client</i></h5>
+                            </a>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="md-form mt-3">
+                                            <input type="text" id="FirstName" class="form-control">
+                                            <label for="FirstName">First Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="md-form mt-3">
+                                            <input type="text" id="LastName" class="form-control">
+                                            <label for="LastName">Last Name</label>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="md-form mt-3">
+                                            <input type="text" id="Phnenumber" class="form-control">
+                                            <label for="Phnenumber"> Phone Number</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="md-form mt-3">
+                                            <input type="text" id="conformPhnenumber" class="form-control">
+                                            <label for="conformPhnenumber">Conform Phone Number</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="md-form mt-3">
+                                            <input type="text" id="materialSubscriptionFormEmail" class="form-control">
+                                            <label for="materialSubscriptionFormEmail">Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="md-form mt-3">
+                                            <input type="text" id="materialSubscriptionFormPasswords"
+                                                class="form-control">
+                                            <label for="materialSubscriptionFormPasswords">Password</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="md-form mt-3">
+                                            <input type="text" id="materialSubscriptionFormTask"
+                                                class="form-control">
+                                            <label for="materialSubscriptionFormTask">Task</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="md-form mt-3">
+                                         <div class="form-group"> 
+                                           <textarea class="form-control"  id="clientNote" rows="3" placeholder="Note"></textarea>
+                                         </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-check">
+                                            <input type="checkbox" class="form-check-input"
+                                                id="materialContactFormCopy">
+                                            <label class="form-check-label" for="materialContactFormCopy">
+                                                Provided above data is true
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class=" btn btn-deep-orange" data-dismiss="modal">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Container -->
+    </div>
+
+    <script type="text/javascript">
+        function disPlayData() {
+            let getData = localStorage.getItem("person");
+            let Arraydata = JSON.parse(getData);
+            let body = document.getElementById("tbody")
+
+            function generateTable(table, data) {
+                for (let element of data) {
+                    let row = table.insertRow();
+                    for (let i = 0; i < Arraydata.length; i++) {
+                        let cell1 = row.insertCell();
+                        let sno = document.createTextNode(i + 1);
+                        cell1.appendChild(sno);
+                    }
+
+                    for (key in element) {
+                        let cell = row.insertCell();
+                        let text = document.createTextNode(element[key]);
+                        cell.appendChild(text);
+                    }
+
+                }
+            }
+            generateTable(body, Arraydata);
+        }
+    </script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+    </script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js">
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

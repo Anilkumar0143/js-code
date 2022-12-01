@@ -1,0 +1,200 @@
+<html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="col-lg-12 col-md-10">
+        <div class="card text-center">
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-10 justify-content-center">
+                        <h4 class="card-title w-100 font-weight-bold ">Welcome <span id="userName"> anil</span></h4>
+                    </div>
+                    <div class="col-2 justify-content-end">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            Logout
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="card-body">
+
+                <!-- Editable table -->
+                <div class="card">
+                    <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Users Data</h3>
+                    <div class="card-body">
+                        <div id="table" class="table-editable">
+                            <div class=" float-right  mr-5"> <span class="table-add float-right mb-3 mr-2">
+                                    <a href="#" onclick="addNew()" class="text-success">
+                                        <i class="fas fa-plus fa-2x" aria-hidden="true" title="Add Row"></i>
+                                    </a>
+                                </span></div>
+
+                            <div class=" float-right  mr-5">
+                                <span class="table-up">
+                                    <a href="#" class="indigo-text">
+                                        <i class="fas fa-long-arrow-alt-up fa-2x" aria-hidden="true" title="sort"></i>
+                                    </a>
+                                </span>
+                                <span class="table-down">
+                                    <a href="#" class="indigo-text">
+                                        <i class="fas fa-long-arrow-alt-down fa-2x" aria-hidden="true" title="sort"></i>
+                                    </a>
+                                </span>
+                            </div>
+
+                            <table
+                                class="table table-bordered table-responsive-md text-center table-striped text-center">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">sNo</th>
+                                        <th class="text-center">Product Name</th>
+                                        <th class="text-center">Price</th>
+                                        <th class="text-center">Date</th>
+                                        <th class="text-center">
+                                            <span class="table-add ">
+                                                <a href="#" onclick="removeRow()" class="text-success">
+                                                    Action <i class="fas fa-trash " aria-hidden="true"
+                                                        title="Remove Row"></i>
+                                                </a>
+                                            </span> </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="newRow">
+
+                                </tbody>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer d-flex black-text justify-content-end">
+                <button onclick="addData()" class=" btn btn-deep-orange">Submit</button>
+            </div>
+        </div>
+    </div>
+<script>
+    let sno = 0;
+var rIndex, body = document.getElementById("newRow");
+
+function addNew() { 
+    for (var i = 0; i < 1; i++) {
+        var row = document.createElement("tr");
+        row.setAttribute("id", "texrow" + (sno++));
+        for (var j = 0; j < 1; j++) {
+            var cell = document.createElement("td");
+            cell.setAttribute("class", "serialno");
+            cell.setAttribute("id", "tex" + (i++) + (sno));
+            cell.contentEditable = "true";
+            cell.innerHTML =  body.rows.length+1;
+            cell.value = cell.innerHTML;
+            row.appendChild(cell);
+
+            var cell1 = document.createElement("td");
+            cell1.setAttribute("class", "productName")
+            cell1.setAttribute("id", "tex" + (i++) + (sno));
+            cell1.contentEditable = "true";
+            cell1.innerHTML = i;
+            cell1.value = cell1.innerHTML;
+            row.appendChild(cell1);
+
+            var cell2 = document.createElement("td");
+            cell2.setAttribute("class", "price");
+            cell2.setAttribute("id", "tex" + (i++) + (sno));
+            cell2.contentEditable = "true";
+            cell2.innerHTML = i;
+            cell2.value = cell2.innerHTML;
+            row.appendChild(cell2);
+
+            var cell3 = document.createElement("td");
+            cell3.setAttribute("class", "date");
+            cell3.setAttribute("id", "tex" + (i++) + (sno));
+            cell3.contentEditable = "true";
+            cell3.innerHTML = i;
+            cell3.value = cell3.innerHTML;
+            row.appendChild(cell3);
+
+            var cell4 = document.createElement("td");
+            var button = document.createElement("button");
+            button.setAttribute("class", "remove");
+            button.setAttribute("id", "tex" + (i++) + (sno));
+            button.innerHTML = "Delete Row"; 
+            button.addEventListener("click", function deleteRow() {
+                if (sno >= 1) {
+                    sno--; 
+                    for (var i = 0; i < body.rows.length; i++) {
+                        body.rows[i].onclick = function () {
+                            let rIndex = this.rowIndex - 1;
+                             body.deleteRow(rIndex);
+                        }
+                    }
+                } else(alert("you have no row to delete1"));
+            });
+            cell4.appendChild(button);
+            row.appendChild(cell4);
+        }
+    }
+    body.appendChild(row); 
+};
+
+
+
+function removeRow() {
+    if (sno >= 1) { 
+        document.getElementById("newRow").innerHTML = " ";
+    } else(alert("you have no row to delete"));
+};
+
+function addData() {
+    let deatils = []; 
+    for (let f = 0; f < body.rows.length; f++) {
+        console.log(body.rows.length);
+        let obj = {
+            serialNo: document.getElementsByClassName("serialno")[f].value,
+            productName: document.getElementsByClassName("productName")[f].value,
+            price: document.getElementsByClassName("price")[f].value,
+            date:document.getElementsByClassName("date")[f].value
+        };
+        deatils.push(obj);
+        console.log(deatils);
+        localStorage.setItem("person", JSON.stringify(deatils));
+    }
+};
+
+</script>
+
+  <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js">
+    </script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js">
+    </script>
+
+</body>
+
+</html>
